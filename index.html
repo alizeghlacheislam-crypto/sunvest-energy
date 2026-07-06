@@ -208,19 +208,27 @@ html[lang="en"] .btn-primary,html[lang="en"] .btn-ghost{font-family:'Inter',sans
 .feat svg{width:34px;height:34px;stroke:var(--grn2);margin-bottom:14px}
 .feat h3{font-size:16.5px;font-weight:700;margin-bottom:6px}
 .feat p{font-size:13.8px;color:var(--muted);line-height:1.7}
-.duo{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
-.duo figure{
+.bento{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:200px;gap:14px}
+.bento figure{
   position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);
-  min-height:280px;max-height:340px;
+  margin:0;
 }
-.duo img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
-.duo figure:hover img{transform:scale(1.04)}
-.duo figcaption{
-  position:absolute;bottom:14px;inset-inline-start:14px;
+.bento figure:hover{border-color:rgba(196,214,0,.35)}
+.bento .b-hero{grid-column:span 2;grid-row:span 2}
+.bento .b-wide{grid-column:span 2}
+.bento img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
+.bento figure:hover img{transform:scale(1.04)}
+.bento figure::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(4,5,7,.62) 0%,rgba(4,5,7,.08) 45%,transparent 70%);
+}
+.bento figcaption{
+  position:absolute;bottom:14px;inset-inline-start:14px;z-index:2;
   font-size:13px;font-weight:500;padding:7px 16px;border-radius:999px;
   background:rgba(4,5,7,.72);border:1px solid var(--line-green);color:var(--lime2);
   backdrop-filter:blur(8px);
 }
+.t1{transition-delay:.08s}.t2{transition-delay:.16s}.t3{transition-delay:.24s}.t4{transition-delay:.32s}.t5{transition-delay:.4s}
 
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .card{
@@ -392,6 +400,7 @@ footer{
 
 @media (max-width:1024px){
   .feat-strip{grid-template-columns:repeat(2,1fr)}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:190px}
   .cards{grid-template-columns:repeat(2,1fr)}
   .proc-grid{grid-template-columns:1fr}
   .proc-visual{min-height:240px}
@@ -409,7 +418,8 @@ footer{
   }
   .lang-toggle{padding:8px 12px;font-size:12.5px}
   .hero{min-height:100vh}
-  .duo{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr;grid-auto-rows:230px}
+  .bento .b-hero,.bento .b-wide{grid-column:auto;grid-row:auto}
   .cards{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr}
   .feat-strip{grid-template-columns:1fr}
@@ -430,7 +440,7 @@ footer{
     <b>SUNVEST <span>ENERGY</span></b>
   </a>
   <div class="nav-links" id="navLinks">
-    <a href="#tech" data-i18n="nav_tech">التقنية</a>
+    <a href="#tech" data-i18n="nav_tech">منتجاتنا</a>
     <a href="#services" data-i18n="nav_services">خدماتنا</a>
     <a href="#about" data-i18n="nav_about">من نحن</a>
     <a href="#process" data-i18n="nav_process">مراحل العمل</a>
@@ -471,40 +481,56 @@ footer{
 <section class="page" id="tech">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow" data-i18n="tech_eyebrow">التقنية</span>
-      <h2 data-i18n="tech_h2">تقنية متقدمة، وإدارة ذكية للطاقة</h2>
-      <p data-i18n="tech_sub">نبني كل نظام على أحدث التقنيات الكهروضوئية مع أنظمة إدارة ذكية تضمن أعلى مردود ممكن.</p>
+      <span class="eyebrow" data-i18n="tech_eyebrow">منتجاتنا الذكية</span>
+      <h2 data-i18n="tech_h2">حلول طاقة شمسية محمولة تواكب أسلوب حياتك</h2>
+      <p data-i18n="tech_sub">من الحقائب والمحافظ الذكية إلى الخيام الميدانية المزودة بالطاقة الشمسية، نصمم منتجات عملية تبقيك متصلاً بالطاقة أينما كنت.</p>
     </div>
     <div class="feat-strip rv d1">
       <div class="feat">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M3 10h18M9 4v12M15 4v12M12 16v4M8 20h8"/></svg>
         <h3 data-i18n="tech_f1_t">تقنية كهروضوئية متقدمة</h3>
-        <p data-i18n="tech_f1_d">ألواح عالية الكفاءة تحقق أقصى إنتاج من كل متر مربع.</p>
+        <p data-i18n="tech_f1_d">خلايا شمسية مرنة وخفيفة مدمجة في منتجات تستخدمها كل يوم.</p>
       </div>
       <div class="feat">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="14" height="10" rx="2"/><path d="M18 10h2v4h-2M8 11v2M11 11v2"/></svg>
         <h3 data-i18n="tech_f2_t">تخزين بالبطاريات</h3>
-        <p data-i18n="tech_f2_d">طاقة متاحة ليلًا وعند انقطاع الشبكة بأنظمة تخزين موثوقة.</p>
+        <p data-i18n="tech_f2_d">بطاريات مدمجة تخزّن طاقة الشمس لتشحن أجهزتك ليلًا وفي الطريق.</p>
       </div>
       <div class="feat">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg>
         <h3 data-i18n="tech_f3_t">إدارة ذكية للطاقة</h3>
-        <p data-i18n="tech_f3_d">مراقبة وتحكم لحظي في الإنتاج والاستهلاك لرفع الكفاءة.</p>
+        <p data-i18n="tech_f3_d">شحن ذكي يوزّع الطاقة على أجهزتك ويعرض مستوى البطارية لحظيًا.</p>
       </div>
       <div class="feat">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c4-9 9-13 16-14-1 7-5 12-14 16"/><path d="M4 19c1.5-1.5 3-2.5 5-3"/></svg>
         <h3 data-i18n="tech_f4_t">استدامة حقيقية</h3>
-        <p data-i18n="tech_f4_d">خفض انبعاثات الكربون وأثر بيئي إيجابي طويل الأمد.</p>
+        <p data-i18n="tech_f4_d">طاقة نظيفة من الشمس في جيبك — اعتماد أقل على الشبكة والشواحن.</p>
       </div>
     </div>
-    <div class="duo">
-      <figure class="rv d2">
-        <img src="assets/tech-inverter.jpg" alt="Technician at an inverter and distribution panel">
-        <figcaption data-i18n="tech_duo1">أنظمة العاكسات والتحكم</figcaption>
+    <div class="bento">
+      <figure class="rv b-hero">
+        <img src="assets/tech-photo-1.jpg" alt="SUNVEST ENERGY solar backpack with integrated panel and USB-C charging port">
+        <figcaption data-i18n="bento_1">حقيبة الظهر الشمسية</figcaption>
       </figure>
-      <figure class="rv d3">
-        <img src="assets/tech-efficiency.jpg" alt="Energy efficiency rating chart">
-        <figcaption data-i18n="tech_duo2">حلول كفاءة الطاقة</figcaption>
+      <figure class="rv t1 b-wide">
+        <img src="assets/tech-photo-6.jpg" alt="SUNVEST ENERGY solar-roofed field tent with assembly guide">
+        <figcaption data-i18n="bento_6">الخيمة الميدانية الشمسية</figcaption>
+      </figure>
+      <figure class="rv t2">
+        <img src="assets/tech-photo-3.jpg" alt="Leather solar wallet charging a phone over USB-C">
+        <figcaption data-i18n="bento_3">المحفظة الشمسية الجلدية</figcaption>
+      </figure>
+      <figure class="rv t3">
+        <img src="assets/tech-photo-4.jpg" alt="Solar phone case with flexible panel and card pocket">
+        <figcaption data-i18n="bento_4">غطاء الهاتف الشمسي</figcaption>
+      </figure>
+      <figure class="rv t4">
+        <img src="assets/tech-photo-2.jpg" alt="SUNVEST solar humanitarian kit with lamp, radio, and first-aid supplies">
+        <figcaption data-i18n="bento_2">حقيبة الإغاثة الشمسية</figcaption>
+      </figure>
+      <figure class="rv t5">
+        <img src="assets/tech-photo-5.jpg" alt="Compact solar wallet with battery level indicator">
+        <figcaption data-i18n="bento_5">المحفظة الشمسية المدمجة</figcaption>
       </figure>
     </div>
   </div>
@@ -766,7 +792,7 @@ footer{
     </div>
     <div class="foot-col">
       <h4 data-i18n="ft_col_sections">الأقسام</h4>
-      <a href="#tech" data-i18n="nav_tech">التقنية</a>
+      <a href="#tech" data-i18n="nav_tech">منتجاتنا</a>
       <a href="#services" data-i18n="nav_services">خدماتنا</a>
       <a href="#about" data-i18n="nav_about">من نحن</a>
       <a href="#process" data-i18n="nav_process">مراحل العمل</a>
@@ -791,7 +817,7 @@ footer{
 
 <script>
 const T = {
-  nav_tech:      { ar: 'التقنية',          en: 'Technology' },
+  nav_tech:      { ar: 'منتجاتنا',         en: 'Products' },
   nav_services:  { ar: 'خدماتنا',          en: 'Services' },
   nav_about:     { ar: 'من نحن',           en: 'About' },
   nav_process:   { ar: 'مراحل العمل',      en: 'Process' },
@@ -807,24 +833,28 @@ const T = {
   hero_cta2:     { ar: 'اكتشف خدماتنا',       en: 'Explore Our Services' },
   hero_scroll:   { ar: 'مرّر للأسفل',         en: 'Scroll to explore' },
 
-  tech_eyebrow:  { ar: 'التقنية', en: 'Technology' },
-  tech_h2:       { ar: 'تقنية متقدمة، وإدارة ذكية للطاقة', en: 'Advanced technology, smart energy management' },
-  tech_sub:      { ar: 'نبني كل نظام على أحدث التقنيات الكهروضوئية مع أنظمة إدارة ذكية تضمن أعلى مردود ممكن.',
-                   en: 'We build every system on state-of-the-art photovoltaic technology, paired with intelligent management for maximum yield.' },
+  tech_eyebrow:  { ar: 'منتجاتنا الذكية', en: 'Smart Products' },
+  tech_h2:       { ar: 'حلول طاقة شمسية محمولة تواكب أسلوب حياتك', en: 'Portable solar solutions that fit your lifestyle' },
+  tech_sub:      { ar: 'من الحقائب والمحافظ الذكية إلى الخيام الميدانية المزودة بالطاقة الشمسية، نصمم منتجات عملية تبقيك متصلاً بالطاقة أينما كنت.',
+                   en: 'From smart backpacks and wallets to solar-equipped field tents, we design practical products that keep you connected to power wherever you are.' },
   tech_f1_t:     { ar: 'تقنية كهروضوئية متقدمة', en: 'Advanced Photovoltaics' },
-  tech_f1_d:     { ar: 'ألواح عالية الكفاءة تحقق أقصى إنتاج من كل متر مربع.',
-                   en: 'High-efficiency panels that maximize output per square meter.' },
+  tech_f1_d:     { ar: 'خلايا شمسية مرنة وخفيفة مدمجة في منتجات تستخدمها كل يوم.',
+                   en: 'Flexible, lightweight solar cells built into products you use every day.' },
   tech_f2_t:     { ar: 'تخزين بالبطاريات', en: 'Battery Storage' },
-  tech_f2_d:     { ar: 'طاقة متاحة ليلًا وعند انقطاع الشبكة بأنظمة تخزين موثوقة.',
-                   en: 'Power available at night and during grid outages, with reliable storage systems.' },
+  tech_f2_d:     { ar: 'بطاريات مدمجة تخزّن طاقة الشمس لتشحن أجهزتك ليلًا وفي الطريق.',
+                   en: "Built-in batteries that store the sun's energy to charge your devices at night and on the go." },
   tech_f3_t:     { ar: 'إدارة ذكية للطاقة', en: 'Smart Energy Management' },
-  tech_f3_d:     { ar: 'مراقبة وتحكم لحظي في الإنتاج والاستهلاك لرفع الكفاءة.',
-                   en: 'Real-time monitoring and control of production and consumption to lift efficiency.' },
+  tech_f3_d:     { ar: 'شحن ذكي يوزّع الطاقة على أجهزتك ويعرض مستوى البطارية لحظيًا.',
+                   en: 'Smart charging that balances power across your devices and shows battery level at a glance.' },
   tech_f4_t:     { ar: 'استدامة حقيقية', en: 'Genuine Sustainability' },
-  tech_f4_d:     { ar: 'خفض انبعاثات الكربون وأثر بيئي إيجابي طويل الأمد.',
-                   en: 'Cutting carbon emissions, with lasting positive environmental impact.' },
-  tech_duo1:     { ar: 'أنظمة العاكسات والتحكم', en: 'Inverter & Control Systems' },
-  tech_duo2:     { ar: 'حلول كفاءة الطاقة', en: 'Energy Efficiency Solutions' },
+  tech_f4_d:     { ar: 'طاقة نظيفة من الشمس في جيبك — اعتماد أقل على الشبكة والشواحن.',
+                   en: 'Clean solar energy in your pocket — less reliance on the grid and wall chargers.' },
+  bento_1:       { ar: 'حقيبة الظهر الشمسية', en: 'Solar Backpack' },
+  bento_2:       { ar: 'حقيبة الإغاثة الشمسية', en: 'Solar Humanitarian Kit' },
+  bento_3:       { ar: 'المحفظة الشمسية الجلدية', en: 'Leather Solar Wallet' },
+  bento_4:       { ar: 'غطاء الهاتف الشمسي', en: 'Solar Phone Case' },
+  bento_5:       { ar: 'المحفظة الشمسية المدمجة', en: 'Compact Solar Wallet' },
+  bento_6:       { ar: 'الخيمة الميدانية الشمسية', en: 'Solar Field Tent' },
 
   svc_eyebrow:   { ar: 'خدماتنا', en: 'Services' },
   svc_h2:        { ar: 'حلول متكاملة لكل احتياجات الطاقة', en: 'Complete solutions for every energy need' },
