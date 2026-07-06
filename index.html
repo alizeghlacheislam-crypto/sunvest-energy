@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صن فيست إنرجي | SUNVEST ENERGY — حلول الطاقة الشمسية</title>
+<meta name="description" content="صن فيست إنرجي — حلول طاقة شمسية مبتكرة وموثوقة للمنازل والشركات والصناعات في الجزائر.">
+<meta name="theme-color" content="#040507">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Inter:wght@400;500;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg0:#040507;
+  --bg1:#0A0C12;
+  --panel:rgba(255,255,255,.028);
+  --line:rgba(255,255,255,.08);
+  --line-green:rgba(196,214,0,.16);
+  --lime:#C4D600;
+  --lime2:#D4E157;
+  --grn:#7CB342;
+  --grn2:#66BB6A;
+  --forest:#2E7D32;
+  --deep:#1B5E20;
+  --txt:#EEF2E6;
+  --muted:rgba(238,242,230,.62);
+  --faint:rgba(238,242,230,.4);
+  --ease:cubic-bezier(.19,1,.22,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
+html[lang="ar"] body{font-family:'Tajawal',sans-serif}
+html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3,html[lang="ar"] h4{font-family:'Cairo',sans-serif}
+html[lang="en"] body{font-family:'Inter',sans-serif}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3,html[lang="en"] h4{font-family:'Inter',sans-serif;letter-spacing:-.01em}
+body{
+  background:var(--bg0);
+  color:var(--txt);
+  font-weight:300;
+  line-height:1.8;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-weight:800;line-height:1.35}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+::selection{background:rgba(196,214,0,.28)}
+
+.page{
+  min-height:100vh;
+  scroll-snap-align:start;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:96px clamp(20px,6vw,88px) 56px;
+  overflow:hidden;
+}
+.wrap{width:100%;max-width:1240px;margin-inline:auto;position:relative;z-index:2}
+
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1.25s var(--ease),transform 1.25s var(--ease)}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}.d4{transition-delay:.48s}.d5{transition-delay:.6s}
+
+nav{
+  position:fixed;inset-inline:0;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px clamp(20px,4vw,48px);
+  background:linear-gradient(to bottom,rgba(4,5,7,.82),rgba(4,5,7,0));
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:background .5s var(--ease);
+}
+nav.scrolled{background:rgba(4,5,7,.86);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;line-height:0}
+.brand img{display:block;height:40px;width:auto;object-fit:contain;filter:drop-shadow(0 0 12px rgba(124,179,66,.45))}
+.brand b{font-weight:800;font-size:17px;letter-spacing:.4px;line-height:1}
+.brand b span{color:var(--lime2)}
+.nav-links{display:flex;gap:28px;font-size:14.5px;font-weight:400;color:var(--muted)}
+.nav-links a{transition:color .3s}
+.nav-links a:hover{color:var(--lime2)}
+.nav-right{display:flex;gap:10px;align-items:center}
+.lang-toggle{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 14px;border-radius:999px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);
+  color:var(--txt);font-weight:700;font-size:13px;
+  transition:border-color .35s,background .35s;
+}
+.lang-toggle:hover{border-color:var(--grn2);background:rgba(124,179,66,.08)}
+.lang-toggle svg{width:15px;height:15px;stroke:var(--lime2);opacity:.9}
+.nav-cta{
+  font-size:14px;font-weight:500;padding:9px 22px;border-radius:999px;
+  color:#0A130A;background:linear-gradient(135deg,var(--lime2),var(--grn));
+  border:none;box-shadow:0 0 22px rgba(196,214,0,.25);
+  transition:box-shadow .4s var(--ease),transform .4s var(--ease);
+}
+.nav-cta:hover{box-shadow:0 0 34px rgba(196,214,0,.45);transform:translateY(-1px)}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:8px 10px;color:var(--txt)}
+
+.hero{padding:0;justify-content:flex-end}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,5,7,.97) 8%,rgba(4,5,7,.66) 45%,rgba(4,5,7,.3) 100%)}
+.hero-glow{
+  position:absolute;left:50%;bottom:-38%;width:130vw;height:90vh;transform:translateX(-50%);
+  background:radial-gradient(ellipse 55% 50% at 50% 100%,rgba(124,179,66,.32),rgba(46,125,50,.14) 45%,transparent 72%);
+  pointer-events:none;will-change:transform;
+}
+.grid-lines{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(212,225,87,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(212,225,87,.05) 1px,transparent 1px);
+  background-size:58px 58px;
+  -webkit-mask-image:radial-gradient(ellipse 75% 65% at 50% 45%,#000 25%,transparent 78%);
+  mask-image:radial-gradient(ellipse 75% 65% at 50% 45%,#000 25%,transparent 78%);
+}
+.hero-content{
+  position:relative;z-index:2;text-align:center;max-width:900px;margin-inline:auto;
+  padding:0 24px 15vh;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13.5px;font-weight:500;color:var(--lime2);
+  border:1px solid var(--line-green);border-radius:999px;padding:6px 18px;
+  background:rgba(196,214,0,.06);margin-bottom:26px;
+}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime)}
+.hero h1{
+  font-size:clamp(34px,5.6vw,66px);font-weight:900;
+  margin-bottom:20px;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(120deg,var(--lime2),var(--grn2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{font-size:clamp(16px,1.6vw,19.5px);color:var(--muted);max-width:640px;margin:0 auto 38px}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{
+  font-weight:700;font-size:16px;
+  padding:14px 36px;border-radius:999px;border:none;color:#0A130A;
+  background:linear-gradient(135deg,var(--lime2),var(--grn));
+  box-shadow:0 0 30px rgba(196,214,0,.3);
+  transition:box-shadow .5s var(--ease),transform .5s var(--ease);
+  display:inline-block;
+}
+html[lang="ar"] .btn-primary,html[lang="ar"] .btn-ghost{font-family:'Cairo',sans-serif}
+html[lang="en"] .btn-primary,html[lang="en"] .btn-ghost{font-family:'Inter',sans-serif}
+.btn-primary:hover{box-shadow:0 0 46px rgba(196,214,0,.5);transform:translateY(-2px)}
+.btn-ghost{
+  font-weight:700;font-size:16px;
+  padding:14px 36px;border-radius:999px;color:var(--txt);
+  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.04);
+  backdrop-filter:blur(6px);
+  transition:border-color .4s,background .4s;
+  display:inline-block;
+}
+.btn-ghost:hover{border-color:var(--grn2);background:rgba(124,179,66,.1)}
+.scroll-cue{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:var(--faint);font-size:12.5px;
+}
+.scroll-cue .mouse{
+  width:24px;height:38px;border:1.5px solid rgba(255,255,255,.35);border-radius:14px;position:relative;
+}
+.scroll-cue .mouse::after{
+  content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);
+  width:3px;height:7px;border-radius:3px;background:var(--lime2);
+  animation:wheel 1.8s var(--ease) infinite;
+}
+@keyframes wheel{0%{opacity:1;top:7px}70%{opacity:0;top:18px}100%{opacity:0;top:7px}}
+
+.sec-head{text-align:center;max-width:760px;margin:0 auto 48px}
+.sec-head .eyebrow{margin-bottom:18px}
+.sec-head h2{font-size:clamp(26px,3.4vw,42px);font-weight:800;margin-bottom:14px}
+.sec-head p{color:var(--muted);font-size:16.5px}
+
+.feat-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  margin-bottom:44px;
+}
+.feat{background:var(--bg0);padding:28px 24px;transition:background .5s var(--ease)}
+.feat:hover{background:rgba(124,179,66,.05)}
+.feat svg{width:34px;height:34px;stroke:var(--grn2);margin-bottom:14px}
+.feat h3{font-size:16.5px;font-weight:700;margin-bottom:6px}
+.feat p{font-size:13.8px;color:var(--muted);line-height:1.7}
+.duo{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+.duo figure{
+  position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);
+  min-height:280px;max-height:340px;
+}
+.duo img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
+.duo figure:hover img{transform:scale(1.04)}
+.duo figcaption{
+  position:absolute;bottom:14px;inset-inline-start:14px;
+  font-size:13px;font-weight:500;padding:7px 16px;border-radius:999px;
+  background:rgba(4,5,7,.72);border:1px solid var(--line-green);color:var(--lime2);
+  backdrop-filter:blur(8px);
+}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{
+  position:relative;border-radius:20px;overflow:hidden;
+  border:1px solid var(--line);min-height:250px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:24px;isolation:isolate;
+  transition:border-color .5s var(--ease),transform .6s var(--ease);
+}
+.card:hover{border-color:rgba(196,214,0,.35);transform:translateY(-4px)}
+.card .photo{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.card .scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(4,5,7,.94) 18%,rgba(4,5,7,.45) 60%,rgba(4,5,7,.2))}
+.card.abstract{background:
+  radial-gradient(120% 90% at 85% 0%,rgba(124,179,66,.16),transparent 55%),
+  radial-gradient(100% 80% at 10% 100%,rgba(27,94,32,.28),transparent 60%),
+  var(--bg1);}
+.card.abstract .lineart{
+  position:absolute;top:18px;inset-inline-end:18px;width:96px;height:96px;
+  opacity:.3;stroke:var(--grn2);z-index:-1;
+}
+.card .pill{
+  align-self:flex-start;font-size:12px;font-weight:500;color:var(--lime2);
+  border:1px solid var(--line-green);background:rgba(4,5,7,.55);
+  border-radius:999px;padding:4px 14px;margin-bottom:12px;backdrop-filter:blur(6px);
+}
+.card h3{font-size:19px;font-weight:800;margin-bottom:6px}
+.card p{font-size:13.8px;color:var(--muted);line-height:1.7}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.mv-panel{
+  border:1px solid var(--line);border-radius:20px;padding:34px 30px;
+  background:
+    radial-gradient(90% 100% at 50% 0%,rgba(124,179,66,.08),transparent 60%),
+    var(--panel);
+}
+.mv-panel svg{width:36px;height:36px;stroke:var(--lime2);margin-bottom:16px}
+.mv-panel h3{font-size:21px;margin-bottom:10px}
+.mv-panel h3 span{color:var(--grn2);font-weight:500;font-size:.78em;margin-inline-start:6px}
+.mv-panel p{color:var(--muted);font-size:15.5px}
+.about-body{
+  border:1px solid var(--line);border-radius:20px;padding:34px 38px;
+  background:var(--panel);position:relative;overflow:hidden;
+}
+.about-body::before{
+  content:"";position:absolute;inset-inline-end:-120px;top:-120px;width:340px;height:340px;
+  background:radial-gradient(circle,rgba(196,214,0,.1),transparent 65%);
+}
+.about-body p{color:var(--muted);font-size:16px;max-width:100ch;position:relative}
+
+.why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+}
+.why{background:var(--bg0);padding:30px 26px;transition:background .5s var(--ease)}
+.why:hover{background:rgba(124,179,66,.05)}
+.why svg{width:28px;height:28px;stroke:var(--lime2);margin-bottom:12px}
+.why h3{font-size:16.5px;font-weight:700;margin-bottom:6px}
+.why p{font-size:13.8px;color:var(--muted)}
+
+.proc-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:stretch}
+.proc-visual{
+  border:1px solid var(--line);border-radius:22px;position:relative;overflow:hidden;
+  background:
+    radial-gradient(110% 80% at 20% 10%,rgba(124,179,66,.14),transparent 55%),
+    radial-gradient(90% 90% at 90% 95%,rgba(27,94,32,.3),transparent 60%),
+    var(--bg1);
+  display:flex;align-items:center;justify-content:center;min-height:380px;
+}
+.proc-visual .biglineart{width:62%;max-width:330px;opacity:.85}
+.proc-num{
+  position:absolute;top:20px;inset-inline-start:26px;
+  font-weight:900;font-size:76px;line-height:1;
+  background:linear-gradient(160deg,rgba(212,225,87,.85),rgba(46,125,50,.45));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.tabs{display:flex;flex-direction:column;gap:8px}
+.tab{
+  text-align:start;border:1px solid var(--line);border-radius:16px;
+  background:var(--panel);color:var(--txt);padding:18px 22px;
+  display:flex;gap:18px;align-items:flex-start;
+  transition:border-color .5s var(--ease),background .5s var(--ease);
+}
+.tab .num{
+  font-weight:800;font-size:15px;color:var(--faint);
+  border:1px solid var(--line);border-radius:10px;padding:4px 11px;flex-shrink:0;
+  transition:all .5s var(--ease);
+}
+.tab h3{font-size:16.5px;font-weight:700}
+.tab p{font-size:13.8px;color:var(--muted);max-height:0;overflow:hidden;transition:max-height .7s var(--ease),margin .7s var(--ease)}
+.tab.active{border-color:rgba(196,214,0,.4);background:rgba(124,179,66,.07)}
+.tab.active .num{color:#0A130A;background:linear-gradient(135deg,var(--lime2),var(--grn));border-color:transparent}
+.tab.active p{max-height:180px;margin-top:6px}
+
+.faq{max-width:780px;margin-inline:auto}
+.faq details{
+  border:1px solid var(--line);border-radius:16px;background:var(--panel);
+  margin-bottom:10px;overflow:hidden;transition:border-color .4s;
+}
+.faq details[open]{border-color:rgba(196,214,0,.3)}
+.faq summary{
+  list-style:none;cursor:pointer;padding:18px 22px;
+  font-weight:700;font-size:16px;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";font-weight:300;font-size:24px;color:var(--grn2);
+  transition:transform .5s var(--ease);line-height:1;
+}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .ans{padding:0 22px 20px;color:var(--muted);font-size:14.8px}
+
+.contact-card{
+  border:1px solid var(--line);border-radius:24px;padding:clamp(28px,4vw,52px);
+  background:
+    radial-gradient(80% 90% at 50% 110%,rgba(124,179,66,.14),transparent 60%),
+    var(--panel);
+  display:grid;grid-template-columns:1.1fr .9fr;gap:44px;position:relative;overflow:hidden;
+}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.pill-opt{
+  font-size:13px;font-weight:400;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:7px 16px;background:transparent;
+  transition:all .35s var(--ease);
+}
+.pill-opt.sel{color:#0A130A;background:linear-gradient(135deg,var(--lime2),var(--grn));border-color:transparent;font-weight:500}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13.5px;color:var(--muted);margin-bottom:6px}
+.field input,.field textarea{
+  width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line);
+  border-radius:12px;padding:12px 16px;color:var(--txt);
+  font-family:inherit;font-size:15px;font-weight:300;
+  transition:border-color .4s;outline:none;resize:vertical;
+}
+.field input:focus,.field textarea:focus{border-color:var(--grn2)}
+.contact-side h3{font-size:22px;margin-bottom:8px}
+.contact-side>p{color:var(--muted);font-size:15px;margin-bottom:26px}
+.c-link{
+  display:flex;align-items:center;gap:14px;padding:14px 0;
+  border-bottom:1px solid var(--line);transition:padding .4s var(--ease);
+}
+.c-link:hover{padding-inline-start:6px}
+.c-link svg{width:22px;height:22px;stroke:var(--lime2);flex-shrink:0}
+.c-link .lbl{font-size:12.5px;color:var(--faint);display:block}
+.c-link .val{font-size:15.5px;font-weight:400;text-align:end}
+
+footer{
+  position:relative;scroll-snap-align:end;overflow:hidden;
+  border-top:1px solid var(--line);
+  padding:64px clamp(20px,6vw,88px) 28px;
+}
+.foot-glow{
+  position:absolute;left:50%;bottom:-60%;width:110vw;height:70vh;transform:translateX(-50%);
+  background:radial-gradient(ellipse 50% 55% at 50% 100%,rgba(124,179,66,.28),rgba(27,94,32,.12) 50%,transparent 75%);
+  pointer-events:none;
+}
+.foot-grid{
+  position:relative;z-index:2;max-width:1240px;margin-inline:auto;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px;
+}
+.foot-brand p{color:var(--muted);font-size:14px;max-width:34ch;margin-top:14px}
+.foot-col h4{font-size:15px;font-weight:700;margin-bottom:14px;color:var(--lime2)}
+.foot-col a,.foot-col span{display:block;font-size:14px;color:var(--muted);margin-bottom:9px;transition:color .3s}
+.foot-col a:hover{color:var(--txt)}
+.copyright{
+  position:relative;z-index:2;text-align:center;color:var(--faint);font-size:13px;
+  border-top:1px solid var(--line);padding-top:22px;max-width:1240px;margin-inline:auto;
+}
+
+@media (max-width:1024px){
+  .feat-strip{grid-template-columns:repeat(2,1fr)}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .proc-grid{grid-template-columns:1fr}
+  .proc-visual{min-height:240px}
+  .contact-card{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  html{scroll-snap-type:none}
+  .page{min-height:auto;padding:80px 20px 48px}
+  .nav-links{display:none}
+  .burger{display:block}
+  .nav-links.open{
+    display:flex;flex-direction:column;position:absolute;top:100%;inset-inline:0;
+    background:rgba(4,5,7,.97);padding:20px 24px;border-bottom:1px solid var(--line);gap:16px;
+  }
+  .lang-toggle{padding:8px 12px;font-size:12.5px}
+  .hero{min-height:100vh}
+  .duo{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .feat-strip{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto;scroll-snap-type:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="#hero" aria-label="SUNVEST ENERGY">
+    <img src="assets/logo.png" alt="SUNVEST ENERGY">
+    <b>SUNVEST <span>ENERGY</span></b>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#tech" data-i18n="nav_tech">التقنية</a>
+    <a href="#services" data-i18n="nav_services">خدماتنا</a>
+    <a href="#about" data-i18n="nav_about">من نحن</a>
+    <a href="#process" data-i18n="nav_process">مراحل العمل</a>
+    <a href="#faq" data-i18n="nav_faq">الأسئلة الشائعة</a>
+  </div>
+  <div class="nav-right">
+    <button class="lang-toggle" id="langToggle" type="button" aria-label="Toggle language">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18M12 3a13 13 0 0 0 0 18"/></svg>
+      <span id="langToggleLabel">EN</span>
+    </button>
+    <a class="nav-cta" href="#contact" data-i18n="nav_cta">تواصل معنا</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<header class="page hero" id="hero">
+  <video class="hero-bg" autoplay muted loop playsinline preload="auto" poster="assets/hero-installation.jpg" aria-hidden="true">
+    <source src="assets/hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+  <div class="grid-lines"></div>
+  <div class="hero-glow" id="heroGlow"></div>
+  <div class="hero-content">
+    <span class="eyebrow rv" data-i18n="hero_eyebrow">طاقة شمسية — ميلة، الجزائر</span>
+    <h1 class="rv d1" data-i18n="hero_h1">نحوّل ضوء الشمس إلى <em>طاقة موثوقة</em> لمنزلك وأعمالك</h1>
+    <p class="rv d2" data-i18n="hero_sub">حلول طاقة شمسية مبتكرة تجمع بين التقنية الكهروضوئية المتقدمة والإدارة الذكية للطاقة — لخفض تكاليف الكهرباء، وتقليل الانبعاثات، وتعزيز استقلاليتك الطاقية.</p>
+    <div class="cta-row rv d3">
+      <a class="btn-primary" href="#contact" data-i18n="hero_cta1">احجز استشارة مجانية</a>
+      <a class="btn-ghost" href="#services" data-i18n="hero_cta2">اكتشف خدماتنا</a>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <div class="mouse"></div>
+    <span data-i18n="hero_scroll">مرّر للأسفل</span>
+  </div>
+</header>
+
+<section class="page" id="tech">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow" data-i18n="tech_eyebrow">التقنية</span>
+      <h2 data-i18n="tech_h2">تقنية متقدمة، وإدارة ذكية للطاقة</h2>
+      <p data-i18n="tech_sub">نبني كل نظام على أحدث التقنيات الكهروضوئية مع أنظمة إدارة ذكية تضمن أعلى مردود ممكن.</p>
+    </div>
+    <div class="feat-strip rv d1">
+      <div class="feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M3 10h18M9 4v12M15 4v12M12 16v4M8 20h8"/></svg>
+        <h3 data-i18n="tech_f1_t">تقنية كهروضوئية متقدمة</h3>
+        <p data-i18n="tech_f1_d">ألواح عالية الكفاءة تحقق أقصى إنتاج من كل متر مربع.</p>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="14" height="10" rx="2"/><path d="M18 10h2v4h-2M8 11v2M11 11v2"/></svg>
+        <h3 data-i18n="tech_f2_t">تخزين بالبطاريات</h3>
+        <p data-i18n="tech_f2_d">طاقة متاحة ليلًا وعند انقطاع الشبكة بأنظمة تخزين موثوقة.</p>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg>
+        <h3 data-i18n="tech_f3_t">إدارة ذكية للطاقة</h3>
+        <p data-i18n="tech_f3_d">مراقبة وتحكم لحظي في الإنتاج والاستهلاك لرفع الكفاءة.</p>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c4-9 9-13 16-14-1 7-5 12-14 16"/><path d="M4 19c1.5-1.5 3-2.5 5-3"/></svg>
+        <h3 data-i18n="tech_f4_t">استدامة حقيقية</h3>
+        <p data-i18n="tech_f4_d">خفض انبعاثات الكربون وأثر بيئي إيجابي طويل الأمد.</p>
+      </div>
+    </div>
+    <div class="duo">
+      <figure class="rv d2">
+        <img src="assets/tech-inverter.jpg" alt="Technician at an inverter and distribution panel">
+        <figcaption data-i18n="tech_duo1">أنظمة العاكسات والتحكم</figcaption>
+      </figure>
+      <figure class="rv d3">
+        <img src="assets/tech-efficiency.jpg" alt="Energy efficiency rating chart">
+        <figcaption data-i18n="tech_duo2">حلول كفاءة الطاقة</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow" data-i18n="svc_eyebrow">خدماتنا</span>
+      <h2 data-i18n="svc_h2">حلول متكاملة لكل احتياجات الطاقة</h2>
+      <p data-i18n="svc_sub">من الاستشارة الأولى إلى الصيانة الدورية — نرافقك في كل خطوة.</p>
+    </div>
+    <div class="cards">
+      <article class="card rv">
+        <img class="photo" src="assets/card-residential.jpg" alt="Home with rooftop solar panels">
+        <div class="scrim"></div>
+        <span class="pill" data-i18n="svc_c1_p">سكني</span>
+        <h3 data-i18n="svc_c1_t">الأنظمة الشمسية السكنية</h3>
+        <p data-i18n="svc_c1_d">أنظمة مصممة لمنزلك تخفض فاتورة الكهرباء وترفع قيمة العقار.</p>
+      </article>
+      <article class="card rv d1">
+        <img class="photo" src="assets/card-industrial.jpg" alt="Industrial rooftop covered in solar panels">
+        <div class="scrim"></div>
+        <span class="pill" data-i18n="svc_c2_p">تجاري وصناعي</span>
+        <h3 data-i18n="svc_c2_t">الطاقة الشمسية التجارية والصناعية</h3>
+        <p data-i18n="svc_c2_d">محطات على أسطح المنشآت تقلل تكاليف التشغيل على نطاق واسع.</p>
+      </article>
+      <article class="card rv d2">
+        <img class="photo" src="assets/card-installation.jpg" alt="Technician installing solar panels on a rooftop">
+        <div class="scrim"></div>
+        <span class="pill" data-i18n="svc_c3_p">تركيب</span>
+        <h3 data-i18n="svc_c3_t">تركيب الألواح الشمسية</h3>
+        <p data-i18n="svc_c3_d">تركيب احترافي بمعايير سلامة صارمة وضبط دقيق لزوايا الألواح.</p>
+      </article>
+      <article class="card rv d1">
+        <img class="photo" src="assets/card-storage.png" alt="Row of battery energy storage cabinets in a warehouse">
+        <div class="scrim"></div>
+        <span class="pill" data-i18n="svc_c4_p">تخزين</span>
+        <h3 data-i18n="svc_c4_t">تخزين الطاقة بالبطاريات</h3>
+        <p data-i18n="svc_c4_d">أنظمة تخزين تؤمّن طاقتك ليلًا وأثناء انقطاعات الشبكة.</p>
+      </article>
+      <article class="card rv d2">
+        <img class="photo" src="assets/card-efficiency.png" alt="Energy efficiency A-to-G rating chart">
+        <div class="scrim"></div>
+        <span class="pill" data-i18n="svc_c5_p">كفاءة</span>
+        <h3 data-i18n="svc_c5_t">حلول كفاءة الطاقة</h3>
+        <p data-i18n="svc_c5_d">تدقيق طاقي وحلول ذكية لخفض الاستهلاك قبل التوليد وبعده.</p>
+      </article>
+      <article class="card rv d3">
+        <img class="photo" src="assets/card-maintenance.jpg" alt="Technician performing maintenance on a solar installation">
+        <div class="scrim"></div>
+        <span class="pill" data-i18n="svc_c6_p">صيانة</span>
+        <h3 data-i18n="svc_c6_t">الصيانة والدعم الفني</h3>
+        <p data-i18n="svc_c6_d">متابعة دورية وتدخل سريع للحفاظ على أداء نظامك في ذروته.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="about">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow" data-i18n="about_eyebrow">من نحن</span>
+      <h2 data-i18n="about_h2">ملتزمون بمستقبل أنظف وأكثر استدامة</h2>
+    </div>
+    <div class="about-grid">
+      <div class="mv-panel rv d1">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg>
+        <h3 data-i18n="about_mission_h">رسالتنا <span>Mission</span></h3>
+        <p data-i18n="about_mission_p">تسريع التحول نحو الطاقة النظيفة من خلال تقديم حلول شمسية مبتكرة وموثوقة ومستدامة، تخلق قيمة طويلة الأمد لعملائنا وللبيئة.</p>
+      </div>
+      <div class="mv-panel rv d2">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="3"/></svg>
+        <h3 data-i18n="about_vision_h">رؤيتنا <span>Vision</span></h3>
+        <p data-i18n="about_vision_p">أن نصبح شركة رائدة في مجال الطاقة المتجددة، تقود مستقبلًا أنظف وأذكى وأكثر استدامة.</p>
+      </div>
+    </div>
+    <div class="about-body rv d3">
+      <p data-i18n="about_body">في <b>صن فيست إنرجي</b>، نلتزم بتسريع التحول نحو مستقبل أنظف وأكثر استدامة. نطوّر حلول طاقة شمسية مبتكرة توفّر طاقة موثوقة وميسورة التكلفة ومسؤولة بيئيًا للشركات والمجتمعات والصناعات. وبدمج التقنية الكهروضوئية المتقدمة مع الإدارة الذكية للطاقة، نساعد عملاءنا على خفض تكاليف الطاقة، وتقليل انبعاثات الكربون، وتعزيز استقلاليتهم الطاقية. كل مشروع نصممه يركّز على الكفاءة والاستدامة والقيمة طويلة الأمد — لأثر إيجابي على الإنسان والكوكب معًا.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="why">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow" data-i18n="why_eyebrow">لماذا نحن</span>
+      <h2 data-i18n="why_h2">لماذا يختارنا عملاؤنا</h2>
+    </div>
+    <div class="why-grid rv d1">
+      <div class="why">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+        <h3 data-i18n="why_1_t">مهندسون ذوو خبرة</h3>
+        <p data-i18n="why_1_d">فريق هندسي متمرّس في تصميم وتنفيذ الأنظمة الشمسية.</p>
+      </div>
+      <div class="why">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8L12 2Z"/></svg>
+        <h3 data-i18n="why_2_t">معدات عالية الجودة</h3>
+        <p data-i18n="why_2_d">ألواح وعاكسات وبطاريات من علامات موثوقة عالميًا.</p>
+      </div>
+      <div class="why">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V10l6-6 6 6v10M10 20v-5h4v5"/></svg>
+        <h3 data-i18n="why_3_t">حلول طاقة مخصصة</h3>
+        <p data-i18n="why_3_d">كل نظام يُصمَّم حسب موقعك واستهلاكك وأهدافك.</p>
+      </div>
+      <div class="why">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h5v5"/></svg>
+        <h3 data-i18n="why_4_t">توفير في التكاليف</h3>
+        <p data-i18n="why_4_d">خفض ملموس ومستمر في فواتير الكهرباء منذ اليوم الأول.</p>
+      </div>
+      <div class="why">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c4-9 9-13 16-14-1 7-5 12-14 16"/><path d="M4 19c1.5-1.5 3-2.5 5-3"/></svg>
+        <h3 data-i18n="why_5_t">تقنيات مستدامة</h3>
+        <p data-i18n="why_5_d">حلول صديقة للبيئة تقلل بصمتك الكربونية بشكل حقيقي.</p>
+      </div>
+      <div class="why">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 12h-4M12 12l3-3M12 16a4 4 0 0 1-4-4"/></svg>
+        <h3 data-i18n="why_6_t">دعم موثوق للعملاء</h3>
+        <p data-i18n="why_6_d">قناة تواصل مباشرة ودعم فني سريع الاستجابة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="process">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow" data-i18n="proc_eyebrow">مراحل العمل</span>
+      <h2 data-i18n="proc_h2">من الاستشارة إلى الصيانة — خطوة بخطوة</h2>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-visual rv d1">
+        <span class="proc-num" id="procNum">01</span>
+        <svg class="biglineart" viewBox="0 0 200 200" fill="none" stroke="#7CB342" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="30" y="45" width="140" height="80" rx="4" opacity=".8"/>
+          <path d="M30 72h140M30 99h140M65 45v80M100 45v80M135 45v80" opacity=".5"/>
+          <path d="M100 125v30M75 155h50" opacity=".8"/>
+          <path d="M108 20l-16 26h11l-6 21 19-30h-11l9-17h-6Z" stroke="#D4E157" opacity=".9"/>
+          <circle cx="168" cy="30" r="12" opacity=".6"/>
+          <path d="M168 12v6M168 42v6M150 30h6M180 30h6M155 17l4 4M177 39l4 4M155 43l4-4M177 21l4-4" opacity=".45"/>
+        </svg>
+      </div>
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-n="01" type="button">
+          <span class="num">01</span>
+          <div><h3 data-i18n="proc_1_t">استشارة مجانية</h3><p data-i18n="proc_1_d">نستمع إلى احتياجاتك، ونحلل استهلاكك الحالي للطاقة، ونحدد الأهداف معًا — دون أي التزام.</p></div>
+        </button>
+        <button class="tab" data-n="02" type="button">
+          <span class="num">02</span>
+          <div><h3 data-i18n="proc_2_t">تقييم الموقع</h3><p data-i18n="proc_2_d">زيارة ميدانية لفحص السطح والتوجيه والظلال والبنية الكهربائية لتحديد الإمكانات الفعلية للموقع.</p></div>
+        </button>
+        <button class="tab" data-n="03" type="button">
+          <span class="num">03</span>
+          <div><h3 data-i18n="proc_3_t">تصميم النظام</h3><p data-i18n="proc_3_d">تصميم هندسي مخصص يحدد عدد الألواح والعاكسات وسعة التخزين، مع تقدير واضح للإنتاج والتوفير.</p></div>
+        </button>
+        <button class="tab" data-n="04" type="button">
+          <span class="num">04</span>
+          <div><h3 data-i18n="proc_4_t">التركيب</h3><p data-i18n="proc_4_d">تنفيذ احترافي بأيدي فنيين مختصين، وفق معايير السلامة، مع اختبار وتشغيل كامل للنظام.</p></div>
+        </button>
+        <button class="tab" data-n="05" type="button">
+          <span class="num">05</span>
+          <div><h3 data-i18n="proc_5_t">الصيانة والدعم</h3><p data-i18n="proc_5_d">متابعة دورية لأداء النظام، وتنظيف وفحص وقائي، ودعم فني مستمر طوال عمر المشروع.</p></div>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="faq">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow" data-i18n="faq_eyebrow">الأسئلة الشائعة</span>
+      <h2 data-i18n="faq_h2">أسئلة يطرحها عملاؤنا كثيرًا</h2>
+    </div>
+    <div class="faq rv d1">
+      <details open>
+        <summary data-i18n="faq_1_q">كم يمكن أن أوفّر من فاتورة الكهرباء؟</summary>
+        <p class="ans" data-i18n="faq_1_a">يعتمد التوفير على استهلاكك وحجم النظام وموقعك. بعد الاستشارة المجانية وتقييم الموقع، نقدّم لك تقديرًا رقميًا واضحًا للإنتاج المتوقع ونسبة التوفير قبل أي التزام.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq_2_q">كم يستغرق تركيب النظام الشمسي؟</summary>
+        <p class="ans" data-i18n="faq_2_a">التركيب الفعلي لنظام سكني يستغرق عادة أيامًا قليلة. المدة الإجمالية للمشروع — من التقييم إلى التشغيل — تختلف حسب حجم النظام وجاهزية الموقع، ونحدد لك جدولًا زمنيًا واضحًا منذ البداية.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq_3_q">هل تعمل الألواح الشمسية في الأيام الغائمة؟</summary>
+        <p class="ans" data-i18n="faq_3_a">نعم، تستمر الألواح في إنتاج الطاقة في الطقس الغائم لكن بمردود أقل. ومع أنظمة التخزين بالبطاريات، يمكنك الاستفادة من الفائض المخزّن لتغطية فترات الإنتاج المنخفض.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq_4_q">هل أحتاج إلى بطاريات تخزين؟</summary>
+        <p class="ans" data-i18n="faq_4_a">ليست إلزامية، لكنها تمنحك طاقة ليلًا وأثناء انقطاعات الشبكة وترفع استقلاليتك الطاقية. نساعدك في الموازنة بين التكلفة والفائدة حسب طبيعة استهلاكك.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq_5_q">ماذا عن الصيانة بعد التركيب؟</summary>
+        <p class="ans" data-i18n="faq_5_a">الأنظمة الشمسية قليلة الصيانة بطبيعتها، ونوفّر خدمة متابعة دورية تشمل الفحص والتنظيف ومراقبة الأداء، مع دعم فني مستمر طوال عمر النظام.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="contact">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow" data-i18n="ct_eyebrow">تواصل معنا</span>
+      <h2 data-i18n="ct_h2">ابدأ مشروعك الشمسي اليوم</h2>
+      <p data-i18n="ct_sub">أخبرنا عن احتياجك وسنعود إليك باستشارة مجانية.</p>
+    </div>
+    <div class="contact-card rv d1">
+      <form id="contactForm">
+        <div class="pills" id="catPills">
+          <button type="button" class="pill-opt sel" data-i18n="ct_p1">سكني</button>
+          <button type="button" class="pill-opt" data-i18n="ct_p2">تجاري وصناعي</button>
+          <button type="button" class="pill-opt" data-i18n="ct_p3">تخزين طاقة</button>
+          <button type="button" class="pill-opt" data-i18n="ct_p4">كفاءة طاقة</button>
+          <button type="button" class="pill-opt" data-i18n="ct_p5">صيانة</button>
+        </div>
+        <div class="field">
+          <label for="fName" data-i18n="ct_f_name">الاسم</label>
+          <input id="fName" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="fPhone" data-i18n="ct_f_phone">رقم الهاتف</label>
+          <input id="fPhone" type="tel" required autocomplete="tel" dir="ltr">
+        </div>
+        <div class="field">
+          <label for="fMsg" data-i18n="ct_f_msg">رسالتك</label>
+          <textarea id="fMsg" rows="4"></textarea>
+        </div>
+        <button class="btn-primary" type="submit" style="width:100%" data-i18n="ct_submit">إرسال عبر واتساب</button>
+      </form>
+      <div class="contact-side">
+        <h3 data-i18n="ct_side_h">تواصل مباشر</h3>
+        <p data-i18n="ct_side_p">يسعدنا الرد على استفساراتك عبر أي من القنوات التالية:</p>
+        <a class="c-link" href="mailto:sunvest.energy2024@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <span style="flex:1"><span class="lbl" data-i18n="ct_lbl_email">البريد الإلكتروني</span><span class="val" dir="ltr">sunvest.energy2024@gmail.com</span></span>
+        </a>
+        <a class="c-link" href="https://wa.me/213782827430" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L4 20l1-4.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M9.5 9.5c.5 2.5 2.5 4.5 5 5l1-1.5 2 1c-.5 1.5-1.5 2-3 1.7-2.8-.5-5.7-3.4-6.2-6.2-.3-1.5.2-2.5 1.7-3l1 2-1.5 1Z"/></svg>
+          <span style="flex:1"><span class="lbl" data-i18n="ct_lbl_wa">واتساب</span><span class="val" dir="ltr">+213 782 82 74 30</span></span>
+        </a>
+        <a class="c-link" href="https://maps.google.com/?q=Mila,Algeria" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <span style="flex:1"><span class="lbl" data-i18n="ct_lbl_loc">الموقع</span><span class="val" dir="auto" data-i18n="ct_loc_val">ميلة، الجزائر</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-glow"></div>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="#hero">
+        <img src="assets/logo.png" alt="SUNVEST ENERGY">
+        <b>SUNVEST <span>ENERGY</span></b>
+      </a>
+      <p data-i18n="ft_tagline">حلول طاقة شمسية مبتكرة وموثوقة ومستدامة — للمنازل والشركات والصناعات.</p>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="ft_col_sections">الأقسام</h4>
+      <a href="#tech" data-i18n="nav_tech">التقنية</a>
+      <a href="#services" data-i18n="nav_services">خدماتنا</a>
+      <a href="#about" data-i18n="nav_about">من نحن</a>
+      <a href="#process" data-i18n="nav_process">مراحل العمل</a>
+      <a href="#faq" data-i18n="nav_faq">الأسئلة الشائعة</a>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="ft_col_services">خدماتنا</h4>
+      <a href="#services" data-i18n="ft_svc1">تركيب الألواح الشمسية</a>
+      <a href="#services" data-i18n="ft_svc2">تخزين الطاقة بالبطاريات</a>
+      <a href="#services" data-i18n="ft_svc3">حلول كفاءة الطاقة</a>
+      <a href="#services" data-i18n="ft_svc4">الصيانة والدعم الفني</a>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="ft_col_contact">تواصل</h4>
+      <a href="mailto:sunvest.energy2024@gmail.com" dir="ltr">sunvest.energy2024@gmail.com</a>
+      <a href="https://wa.me/213782827430" dir="ltr">+213 782 82 74 30</a>
+      <span dir="auto" data-i18n="ft_loc">ميلة، الجزائر</span>
+    </div>
+  </div>
+  <div class="copyright" data-i18n="ft_copyright">© 2026 صن فيست إنرجي SUNVEST ENERGY — جميع الحقوق محفوظة</div>
+</footer>
+
+<script>
+const T = {
+  nav_tech:      { ar: 'التقنية',          en: 'Technology' },
+  nav_services:  { ar: 'خدماتنا',          en: 'Services' },
+  nav_about:     { ar: 'من نحن',           en: 'About' },
+  nav_process:   { ar: 'مراحل العمل',      en: 'Process' },
+  nav_faq:       { ar: 'الأسئلة الشائعة',   en: 'FAQ' },
+  nav_cta:       { ar: 'تواصل معنا',       en: 'Contact Us' },
+
+  hero_eyebrow:  { ar: 'طاقة شمسية — ميلة، الجزائر', en: 'Solar Energy — Mila, Algeria' },
+  hero_h1:       { ar: 'نحوّل ضوء الشمس إلى <em>طاقة موثوقة</em> لمنزلك وأعمالك',
+                   en: 'We turn sunlight into <em>reliable power</em> for your home and business' },
+  hero_sub:      { ar: 'حلول طاقة شمسية مبتكرة تجمع بين التقنية الكهروضوئية المتقدمة والإدارة الذكية للطاقة — لخفض تكاليف الكهرباء، وتقليل الانبعاثات، وتعزيز استقلاليتك الطاقية.',
+                   en: 'Innovative solar solutions that pair advanced photovoltaic technology with smart energy management — cutting your electricity costs, lowering emissions, and strengthening your energy independence.' },
+  hero_cta1:     { ar: 'احجز استشارة مجانية', en: 'Book a Free Consultation' },
+  hero_cta2:     { ar: 'اكتشف خدماتنا',       en: 'Explore Our Services' },
+  hero_scroll:   { ar: 'مرّر للأسفل',         en: 'Scroll to explore' },
+
+  tech_eyebrow:  { ar: 'التقنية', en: 'Technology' },
+  tech_h2:       { ar: 'تقنية متقدمة، وإدارة ذكية للطاقة', en: 'Advanced technology, smart energy management' },
+  tech_sub:      { ar: 'نبني كل نظام على أحدث التقنيات الكهروضوئية مع أنظمة إدارة ذكية تضمن أعلى مردود ممكن.',
+                   en: 'We build every system on state-of-the-art photovoltaic technology, paired with intelligent management for maximum yield.' },
+  tech_f1_t:     { ar: 'تقنية كهروضوئية متقدمة', en: 'Advanced Photovoltaics' },
+  tech_f1_d:     { ar: 'ألواح عالية الكفاءة تحقق أقصى إنتاج من كل متر مربع.',
+                   en: 'High-efficiency panels that maximize output per square meter.' },
+  tech_f2_t:     { ar: 'تخزين بالبطاريات', en: 'Battery Storage' },
+  tech_f2_d:     { ar: 'طاقة متاحة ليلًا وعند انقطاع الشبكة بأنظمة تخزين موثوقة.',
+                   en: 'Power available at night and during grid outages, with reliable storage systems.' },
+  tech_f3_t:     { ar: 'إدارة ذكية للطاقة', en: 'Smart Energy Management' },
+  tech_f3_d:     { ar: 'مراقبة وتحكم لحظي في الإنتاج والاستهلاك لرفع الكفاءة.',
+                   en: 'Real-time monitoring and control of production and consumption to lift efficiency.' },
+  tech_f4_t:     { ar: 'استدامة حقيقية', en: 'Genuine Sustainability' },
+  tech_f4_d:     { ar: 'خفض انبعاثات الكربون وأثر بيئي إيجابي طويل الأمد.',
+                   en: 'Cutting carbon emissions, with lasting positive environmental impact.' },
+  tech_duo1:     { ar: 'أنظمة العاكسات والتحكم', en: 'Inverter & Control Systems' },
+  tech_duo2:     { ar: 'حلول كفاءة الطاقة', en: 'Energy Efficiency Solutions' },
+
+  svc_eyebrow:   { ar: 'خدماتنا', en: 'Services' },
+  svc_h2:        { ar: 'حلول متكاملة لكل احتياجات الطاقة', en: 'Complete solutions for every energy need' },
+  svc_sub:       { ar: 'من الاستشارة الأولى إلى الصيانة الدورية — نرافقك في كل خطوة.',
+                   en: "From your first consultation to ongoing maintenance — we're with you every step of the way." },
+  svc_c1_p:      { ar: 'سكني', en: 'Residential' },
+  svc_c1_t:      { ar: 'الأنظمة الشمسية السكنية', en: 'Residential Solar Systems' },
+  svc_c1_d:      { ar: 'أنظمة مصممة لمنزلك تخفض فاتورة الكهرباء وترفع قيمة العقار.',
+                   en: 'Systems designed for your home that lower your electricity bill and raise your property value.' },
+  svc_c2_p:      { ar: 'تجاري وصناعي', en: 'Commercial & Industrial' },
+  svc_c2_t:      { ar: 'الطاقة الشمسية التجارية والصناعية', en: 'Commercial & Industrial Solar' },
+  svc_c2_d:      { ar: 'محطات على أسطح المنشآت تقلل تكاليف التشغيل على نطاق واسع.',
+                   en: 'Rooftop plants that cut operating costs at scale.' },
+  svc_c3_p:      { ar: 'تركيب', en: 'Installation' },
+  svc_c3_t:      { ar: 'تركيب الألواح الشمسية', en: 'Solar Panel Installation' },
+  svc_c3_d:      { ar: 'تركيب احترافي بمعايير سلامة صارمة وضبط دقيق لزوايا الألواح.',
+                   en: 'Professional installation with strict safety standards and precise panel alignment.' },
+  svc_c4_p:      { ar: 'تخزين', en: 'Storage' },
+  svc_c4_t:      { ar: 'تخزين الطاقة بالبطاريات', en: 'Battery Energy Storage' },
+  svc_c4_d:      { ar: 'أنظمة تخزين تؤمّن طاقتك ليلًا وأثناء انقطاعات الشبكة.',
+                   en: 'Storage systems that secure your power at night and during grid outages.' },
+  svc_c5_p:      { ar: 'كفاءة', en: 'Efficiency' },
+  svc_c5_t:      { ar: 'حلول كفاءة الطاقة', en: 'Energy Efficiency Solutions' },
+  svc_c5_d:      { ar: 'تدقيق طاقي وحلول ذكية لخفض الاستهلاك قبل التوليد وبعده.',
+                   en: 'Energy audits and smart solutions to reduce consumption before and after generation.' },
+  svc_c6_p:      { ar: 'صيانة', en: 'Maintenance' },
+  svc_c6_t:      { ar: 'الصيانة والدعم الفني', en: 'Maintenance & Technical Support' },
+  svc_c6_d:      { ar: 'متابعة دورية وتدخل سريع للحفاظ على أداء نظامك في ذروته.',
+                   en: 'Scheduled monitoring and rapid response to keep your system performing at its peak.' },
+
+  about_eyebrow: { ar: 'من نحن', en: 'About' },
+  about_h2:      { ar: 'ملتزمون بمستقبل أنظف وأكثر استدامة', en: 'Committed to a cleaner, more sustainable future' },
+  about_mission_h:{ ar: 'رسالتنا <span>Mission</span>', en: 'Our Mission <span>رسالتنا</span>' },
+  about_mission_p:{ ar: 'تسريع التحول نحو الطاقة النظيفة من خلال تقديم حلول شمسية مبتكرة وموثوقة ومستدامة، تخلق قيمة طويلة الأمد لعملائنا وللبيئة.',
+                    en: 'To accelerate the transition to clean energy by delivering innovative, reliable, and sustainable solar solutions that create long-term value for our customers and the environment.' },
+  about_vision_h: { ar: 'رؤيتنا <span>Vision</span>', en: 'Our Vision <span>رؤيتنا</span>' },
+  about_vision_p: { ar: 'أن نصبح شركة رائدة في مجال الطاقة المتجددة، تقود مستقبلًا أنظف وأذكى وأكثر استدامة.',
+                    en: 'To become a leading renewable-energy company, driving a cleaner, smarter, and more sustainable future.' },
+  about_body:    { ar: 'في <b>صن فيست إنرجي</b>، نلتزم بتسريع التحول نحو مستقبل أنظف وأكثر استدامة. نطوّر حلول طاقة شمسية مبتكرة توفّر طاقة موثوقة وميسورة التكلفة ومسؤولة بيئيًا للشركات والمجتمعات والصناعات. وبدمج التقنية الكهروضوئية المتقدمة مع الإدارة الذكية للطاقة، نساعد عملاءنا على خفض تكاليف الطاقة، وتقليل انبعاثات الكربون، وتعزيز استقلاليتهم الطاقية. كل مشروع نصممه يركّز على الكفاءة والاستدامة والقيمة طويلة الأمد — لأثر إيجابي على الإنسان والكوكب معًا.',
+                   en: 'At <b>SUNVEST ENERGY</b>, we are committed to accelerating the transition to a cleaner, more sustainable future. We develop innovative solar energy solutions that deliver reliable, affordable, and environmentally responsible power for businesses, communities, and industries. By combining advanced photovoltaic technology with smart energy management, we help our clients reduce energy costs, cut carbon emissions, and improve their energy independence. Every project is designed with a focus on efficiency, sustainability, and long-term value — creating a positive impact for both people and the planet.' },
+
+  why_eyebrow:   { ar: 'لماذا نحن', en: 'Why Us' },
+  why_h2:        { ar: 'لماذا يختارنا عملاؤنا', en: 'Why our clients choose us' },
+  why_1_t:       { ar: 'مهندسون ذوو خبرة', en: 'Experienced Engineers' },
+  why_1_d:       { ar: 'فريق هندسي متمرّس في تصميم وتنفيذ الأنظمة الشمسية.',
+                   en: 'An engineering team seasoned in designing and deploying solar systems.' },
+  why_2_t:       { ar: 'معدات عالية الجودة', en: 'High-Quality Equipment' },
+  why_2_d:       { ar: 'ألواح وعاكسات وبطاريات من علامات موثوقة عالميًا.',
+                   en: 'Panels, inverters, and batteries from globally trusted brands.' },
+  why_3_t:       { ar: 'حلول طاقة مخصصة', en: 'Customized Energy Solutions' },
+  why_3_d:       { ar: 'كل نظام يُصمَّم حسب موقعك واستهلاكك وأهدافك.',
+                   en: 'Every system is designed around your site, consumption, and goals.' },
+  why_4_t:       { ar: 'توفير في التكاليف', en: 'Real Cost Savings' },
+  why_4_d:       { ar: 'خفض ملموس ومستمر في فواتير الكهرباء منذ اليوم الأول.',
+                   en: 'Tangible, ongoing reductions in your electricity bill from day one.' },
+  why_5_t:       { ar: 'تقنيات مستدامة', en: 'Sustainable Technology' },
+  why_5_d:       { ar: 'حلول صديقة للبيئة تقلل بصمتك الكربونية بشكل حقيقي.',
+                   en: 'Environmentally friendly solutions that meaningfully cut your carbon footprint.' },
+  why_6_t:       { ar: 'دعم موثوق للعملاء', en: 'Reliable Customer Support' },
+  why_6_d:       { ar: 'قناة تواصل مباشرة ودعم فني سريع الاستجابة.',
+                   en: 'A direct line of contact and responsive technical support.' },
+
+  proc_eyebrow:  { ar: 'مراحل العمل', en: 'Process' },
+  proc_h2:       { ar: 'من الاستشارة إلى الصيانة — خطوة بخطوة', en: 'From consultation to maintenance — step by step' },
+  proc_1_t:      { ar: 'استشارة مجانية', en: 'Free Consultation' },
+  proc_1_d:      { ar: 'نستمع إلى احتياجاتك، ونحلل استهلاكك الحالي للطاقة، ونحدد الأهداف معًا — دون أي التزام.',
+                   en: 'We listen to your needs, analyze your current energy consumption, and set goals together — with no obligation.' },
+  proc_2_t:      { ar: 'تقييم الموقع', en: 'Site Assessment' },
+  proc_2_d:      { ar: 'زيارة ميدانية لفحص السطح والتوجيه والظلال والبنية الكهربائية لتحديد الإمكانات الفعلية للموقع.',
+                   en: "An on-site visit to inspect roof, orientation, shading, and electrical infrastructure to determine the site's real potential." },
+  proc_3_t:      { ar: 'تصميم النظام', en: 'System Design' },
+  proc_3_d:      { ar: 'تصميم هندسي مخصص يحدد عدد الألواح والعاكسات وسعة التخزين، مع تقدير واضح للإنتاج والتوفير.',
+                   en: 'A tailored engineering design specifying panel count, inverters, and storage capacity, with a clear projection of production and savings.' },
+  proc_4_t:      { ar: 'التركيب', en: 'Installation' },
+  proc_4_d:      { ar: 'تنفيذ احترافي بأيدي فنيين مختصين، وفق معايير السلامة، مع اختبار وتشغيل كامل للنظام.',
+                   en: 'Professional execution by specialist technicians, following safety standards, with full system testing and commissioning.' },
+  proc_5_t:      { ar: 'الصيانة والدعم', en: 'Maintenance & Support' },
+  proc_5_d:      { ar: 'متابعة دورية لأداء النظام، وتنظيف وفحص وقائي، ودعم فني مستمر طوال عمر المشروع.',
+                   en: "Ongoing performance monitoring, cleaning and preventive inspections, and continuous technical support throughout the project's lifetime." },
+
+  faq_eyebrow:   { ar: 'الأسئلة الشائعة', en: 'FAQ' },
+  faq_h2:        { ar: 'أسئلة يطرحها عملاؤنا كثيرًا', en: 'Questions our clients often ask' },
+  faq_1_q:       { ar: 'كم يمكن أن أوفّر من فاتورة الكهرباء؟', en: 'How much can I save on my electricity bill?' },
+  faq_1_a:       { ar: 'يعتمد التوفير على استهلاكك وحجم النظام وموقعك. بعد الاستشارة المجانية وتقييم الموقع، نقدّم لك تقديرًا رقميًا واضحًا للإنتاج المتوقع ونسبة التوفير قبل أي التزام.',
+                   en: 'Savings depend on your consumption, system size, and location. After the free consultation and site assessment, we give you a clear numerical estimate of expected production and savings before any commitment.' },
+  faq_2_q:       { ar: 'كم يستغرق تركيب النظام الشمسي؟', en: 'How long does it take to install a solar system?' },
+  faq_2_a:       { ar: 'التركيب الفعلي لنظام سكني يستغرق عادة أيامًا قليلة. المدة الإجمالية للمشروع — من التقييم إلى التشغيل — تختلف حسب حجم النظام وجاهزية الموقع، ونحدد لك جدولًا زمنيًا واضحًا منذ البداية.',
+                   en: 'The physical installation of a residential system typically takes a few days. Total project duration — from assessment to commissioning — varies with system size and site readiness; we set a clear timeline for you from the start.' },
+  faq_3_q:       { ar: 'هل تعمل الألواح الشمسية في الأيام الغائمة؟', en: 'Do solar panels work on cloudy days?' },
+  faq_3_a:       { ar: 'نعم، تستمر الألواح في إنتاج الطاقة في الطقس الغائم لكن بمردود أقل. ومع أنظمة التخزين بالبطاريات، يمكنك الاستفادة من الفائض المخزّن لتغطية فترات الإنتاج المنخفض.',
+                   en: 'Yes, panels continue producing energy in cloudy weather at reduced output. With battery storage, you can draw on stored surplus to cover periods of lower production.' },
+  faq_4_q:       { ar: 'هل أحتاج إلى بطاريات تخزين؟', en: 'Do I need battery storage?' },
+  faq_4_a:       { ar: 'ليست إلزامية، لكنها تمنحك طاقة ليلًا وأثناء انقطاعات الشبكة وترفع استقلاليتك الطاقية. نساعدك في الموازنة بين التكلفة والفائدة حسب طبيعة استهلاكك.',
+                   en: "It's not mandatory, but it gives you power at night and during grid outages and strengthens your energy independence. We help you weigh cost against benefit based on your consumption pattern." },
+  faq_5_q:       { ar: 'ماذا عن الصيانة بعد التركيب؟', en: 'What about maintenance after installation?' },
+  faq_5_a:       { ar: 'الأنظمة الشمسية قليلة الصيانة بطبيعتها، ونوفّر خدمة متابعة دورية تشمل الفحص والتنظيف ومراقبة الأداء، مع دعم فني مستمر طوال عمر النظام.',
+                   en: "Solar systems are inherently low-maintenance. We provide scheduled monitoring — inspection, cleaning, and performance tracking — with continuous technical support for the system's full lifetime." },
+
+  ct_eyebrow:    { ar: 'تواصل معنا', en: 'Contact' },
+  ct_h2:         { ar: 'ابدأ مشروعك الشمسي اليوم', en: 'Start your solar project today' },
+  ct_sub:        { ar: 'أخبرنا عن احتياجك وسنعود إليك باستشارة مجانية.',
+                   en: "Tell us what you need and we'll come back with a free consultation." },
+  ct_p1:         { ar: 'سكني', en: 'Residential' },
+  ct_p2:         { ar: 'تجاري وصناعي', en: 'Commercial & Industrial' },
+  ct_p3:         { ar: 'تخزين طاقة', en: 'Energy Storage' },
+  ct_p4:         { ar: 'كفاءة طاقة', en: 'Energy Efficiency' },
+  ct_p5:         { ar: 'صيانة', en: 'Maintenance' },
+  ct_f_name:     { ar: 'الاسم', en: 'Name' },
+  ct_f_phone:    { ar: 'رقم الهاتف', en: 'Phone Number' },
+  ct_f_msg:      { ar: 'رسالتك', en: 'Your Message' },
+  ct_submit:     { ar: 'إرسال عبر واتساب', en: 'Send via WhatsApp' },
+  ct_side_h:     { ar: 'تواصل مباشر', en: 'Direct Contact' },
+  ct_side_p:     { ar: 'يسعدنا الرد على استفساراتك عبر أي من القنوات التالية:',
+                   en: "We're happy to answer your questions through any of the following channels:" },
+  ct_lbl_email:  { ar: 'البريد الإلكتروني', en: 'Email' },
+  ct_lbl_wa:     { ar: 'واتساب', en: 'WhatsApp' },
+  ct_lbl_loc:    { ar: 'الموقع', en: 'Location' },
+  ct_loc_val:    { ar: 'ميلة، الجزائر', en: 'Mila, Algeria' },
+
+  ft_tagline:    { ar: 'حلول طاقة شمسية مبتكرة وموثوقة ومستدامة — للمنازل والشركات والصناعات.',
+                   en: 'Innovative, reliable, sustainable solar solutions — for homes, businesses, and industries.' },
+  ft_col_sections:{ ar: 'الأقسام',   en: 'Sections' },
+  ft_col_services:{ ar: 'خدماتنا',   en: 'Services' },
+  ft_col_contact: { ar: 'تواصل',     en: 'Contact' },
+  ft_svc1:       { ar: 'تركيب الألواح الشمسية',   en: 'Solar Panel Installation' },
+  ft_svc2:       { ar: 'تخزين الطاقة بالبطاريات', en: 'Battery Energy Storage' },
+  ft_svc3:       { ar: 'حلول كفاءة الطاقة',       en: 'Energy Efficiency Solutions' },
+  ft_svc4:       { ar: 'الصيانة والدعم الفني',    en: 'Maintenance & Technical Support' },
+  ft_loc:        { ar: 'ميلة، الجزائر', en: 'Mila, Algeria' },
+  ft_copyright:  { ar: '© 2026 صن فيست إنرجي SUNVEST ENERGY — جميع الحقوق محفوظة',
+                   en: '© 2026 SUNVEST ENERGY صن فيست إنرجي — All rights reserved' },
+};
+
+let lang = 'ar';
+function applyLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    const entry = T[key];
+    if (entry && entry[l] != null) el.innerHTML = entry[l];
+  });
+  const label = document.getElementById('langToggleLabel');
+  if (label) label.textContent = l === 'ar' ? 'EN' : 'عربي';
+}
+document.getElementById('langToggle').addEventListener('click', () => applyLang(lang === 'ar' ? 'en' : 'ar'));
+
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+}, { threshold: .18 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+const nav = document.getElementById('nav');
+const glow = document.getElementById('heroGlow');
+addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', scrollY > 40);
+  if (glow && scrollY < innerHeight * 1.5) glow.style.transform = `translateX(-50%) translateY(${scrollY * .18}px)`;
+}, { passive: true });
+
+const burger = document.getElementById('burger');
+const links = document.getElementById('navLinks');
+burger.addEventListener('click', () => links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+const tabs = document.querySelectorAll('.tab');
+const procNum = document.getElementById('procNum');
+tabs.forEach(t => t.addEventListener('click', () => {
+  tabs.forEach(x => x.classList.remove('active'));
+  t.classList.add('active');
+  procNum.textContent = t.dataset.n;
+}));
+
+const pillBox = document.getElementById('catPills');
+pillBox.addEventListener('click', e => {
+  if (!e.target.classList.contains('pill-opt')) return;
+  pillBox.querySelectorAll('.pill-opt').forEach(p => p.classList.remove('sel'));
+  e.target.classList.add('sel');
+});
+
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const cat = pillBox.querySelector('.sel')?.textContent?.trim() || '';
+  const name = document.getElementById('fName').value.trim();
+  const phone = document.getElementById('fPhone').value.trim();
+  const msg = document.getElementById('fMsg').value.trim();
+  const text = lang === 'ar'
+    ? `مرحبًا، أنا ${name}\nنوع الطلب: ${cat}\nالهاتف: ${phone}${msg ? '\n' + msg : ''}`
+    : `Hello, I'm ${name}\nCategory: ${cat}\nPhone: ${phone}${msg ? '\n' + msg : ''}`;
+  open(`https://wa.me/213782827430?text=${encodeURIComponent(text)}`, '_blank');
+});
+</script>
+</body>
+</html>
