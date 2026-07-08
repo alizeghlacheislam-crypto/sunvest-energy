@@ -17,3 +17,6 @@ node_modules/
 
 # Vercel
 .vercel/
+
+# Design source files (masters kept locally, not shipped)
+logo-clean.png*
